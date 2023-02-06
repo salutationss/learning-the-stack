@@ -1,10 +1,32 @@
 import { useState } from "react"
 
+type Tmessage ={ 
+    message: string;
+    id: string;
+    sender: string
+}
+
 export const HelpWidget = () => {
     const [ isChatPanelDisplayed, setIsChatPanelDisplayed ] = useState(false)
-    const [ messages, setMessages ] = useState<string[]>([
-        'Hello, how can we help?',
-        'I need help',
+    const [ senderId, setSenderId ] = useState("0")
+    const [ messages, setMessages ] = useState<Tmessage[]>([
+        { message:'Hello, how can we help?', 
+        id:"sdfsa8ewq4r23", 
+        sender: "1" 
+    },
+        { message:'I need help', 
+        id: "asdaf24323as32", 
+        sender: "0"
+     },
+        { message:'Hello, how can we help?', 
+        id:"wqerasfsdg", 
+        sender: "1" 
+    },
+        { message:'I need help', 
+        id: "wefrwer43252345", 
+        sender: "0" 
+    },
+   
     ]);
     
     return isChatPanelDisplayed ? (
@@ -17,8 +39,10 @@ export const HelpWidget = () => {
             >X</button>
             <div>
                 <ul>
-                    <li>Hello, How can we Help</li>
-                    <li>Hi Im having some trouble</li>
+                    {messages.map(({message, id}) => (
+                        <li key={id}>{message}</li>
+                    
+                    ))}
                 </ul>
             </div>
             <form className="flex ">
