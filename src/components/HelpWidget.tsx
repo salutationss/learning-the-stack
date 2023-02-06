@@ -1,4 +1,7 @@
-import { useState } from "react"
+import AgoraRTM from "agora-rtm-sdk";
+import { useEffect, useState } from "react"
+import { api } from "../utils/api"
+
 
 type Tmessage ={ 
     message: string;
@@ -7,6 +10,8 @@ type Tmessage ={
 }
 
 export const HelpWidget = () => {
+    const createHelpRequestMutation = api.helpRequest.createHelpRequest.useMutation()
+
     const [ isChatPanelDisplayed, setIsChatPanelDisplayed ] = useState(false)
     const [ senderId, setSenderId ] = useState("0")
     const [ messages, setMessages ] = useState<Tmessage[]>([
@@ -26,9 +31,16 @@ export const HelpWidget = () => {
         id: "wefrwer43252345", 
         sender: "0" 
     },
-   
     ]);
-    
+
+    const handleOpenSupportWidget = async () => {
+        setIsChatPanelDisplayed(true)
+        const helpRequest = await createHelpRequestMutation.mutateAsync();
+        const { default: AgoraRTM } = await import("agora-rtm-sdk")
+        const client = AgoraRTM.createInstance(process.env.NEXT_PUBLIC_AGORA_ID!)
+    }
+
+   
     return isChatPanelDisplayed ? (
         <div className="
         flex flex-col
@@ -55,7 +67,7 @@ export const HelpWidget = () => {
         </div>
     ) : (
      <button 
-        onClick={() => setIsChatPanelDisplayed(true)}
+        onClick={handleOpenSupportWidget}
         className="
         fixed bottom-10 right-10 bg-blue-400 p-2 px-3 text-white hover:bg-blue-500 cursor-pointer rounded">
         Get Help
