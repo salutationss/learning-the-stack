@@ -33,14 +33,16 @@ export const HelpWidget = () => {
         <div className="
         flex flex-col
         fixed bottom-10 justify-between
-        right-10 h-96 w-72 bg-white p-6 rounded-md"> 
+        right-10 h-96 w-72 bg-white p-8 rounded"> 
             <button className="absolute  top-4 right-4 hover:text-red-500d"
             onClick={() => setIsChatPanelDisplayed(false)}
             >X</button>
             <div>
                 <ul>
-                    {messages.map(({message, id}) => (
-                        <li key={id}>{message}</li>
+                    {messages.map(({message, id, sender}) => (
+                        <li
+                        className={` rounded p-1 mb-2 ${sender === senderId ? 'bg-gray-100' : 'bg-blue-300'}`}
+                        key={id}>{message}</li>
                     
                     ))}
                 </ul>
