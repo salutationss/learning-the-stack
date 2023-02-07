@@ -9,7 +9,10 @@ const AdminPage: NextPage = () => {
 const helpRequestsQuery = api.helpRequest.getHelpRequests.useQuery();
 
 const handleHelpRequestClicked = () => {
-
+    console.log('clicked')
+   helpRequestsQuery.data?.map((helpRequest => ( 
+         console.log(helpRequest.id)
+    )))
 }
 
   return (
@@ -24,9 +27,12 @@ const handleHelpRequestClicked = () => {
         
         <section>
           <div>
-            {helpRequestsQuery.data?.map((helpRequest => (
-                <button onClick={handleHelpRequestClicked} key={helpRequest.id}>{helpRequest.id}</button> 
-            )))}
+            <table>
+                {helpRequestsQuery.data?.map((helpRequest => (
+     <button onClick={handleHelpRequestClicked} key={helpRequest.id}>{helpRequest.id}</button>
+)))}
+ 
+            </table>
             </div>
             <div>
                 <input type="text" ></input>
