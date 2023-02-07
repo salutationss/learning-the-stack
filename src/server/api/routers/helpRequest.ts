@@ -13,4 +13,21 @@ export const helpRequestRouter = createTRPCRouter({
         const helpRequests = await ctx.prisma.helpRequest.findMany();
         return helpRequests;
     }),
+    deleteHelpRequest: publicProcedure
+        .input(
+            z.object({
+                id: z.string(),
+            })
+        )
+        .mutation(async ({ ctx, input }) => {
+            await ctx.prisma.helpRequest.delete({
+                where: {
+                    id: input.id,
+                },
+            });
+        }),
+    getHelpRequest: publicProcedure.query(async ({ ctx, input }) => {
+        const helpRequest = await ctx.prisma.helpRequest.findMany();
+        return helpRequest;
+    }),
 });
