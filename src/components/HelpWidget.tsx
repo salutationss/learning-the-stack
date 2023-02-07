@@ -1,4 +1,5 @@
-import AgoraRTM, { RtmChannel, RtmMessage } from "agora-rtm-sdk";
+import AgoraRTM from "agora-rtm-sdk"; 
+import { RtmChannel, RtmMessage } from "agora-rtm-sdk";
 import { useEffect, useRef, useState } from "react"
 import { api } from "../utils/api"
 
@@ -31,7 +32,7 @@ export const HelpWidget = () => {
         const client = AgoraRTM.createInstance(process.env.NEXT_PUBLIC_AGORA_ID!)
         await client.login({
             uid: `${Math.floor(Math.random() * 250)}`,
-            token: undefined,
+            token: "",
         })
         const channel = await client.createChannel(helpRequest.id)
         channelRef.current = channel;
@@ -69,9 +70,7 @@ export const HelpWidget = () => {
         flex flex-col
         fixed bottom-10 justify-between
         right-10 h-96 w-72 bg-white p-8 rounded"> 
-            <button className="absolute  top-4 right-4 hover:text-red-500d"
-            onClick={() => setIsChatPanelDisplayed(false)}
-            >X</button>
+            <button className="absolute  top-4 right-4 hover:text-red-500" onClick={() => setIsChatPanelDisplayed(false)}>X</button>
             
                 <ul>
                     {messages.map(({message, id, sender}) => (
