@@ -1,11 +1,14 @@
 import { type NextPage } from "next";
+import { useRouter } from "next/router";
 import Head from "next/head";
 import Link from "next/link";
 import { HelpWidget } from "../components/HelpWidget";
 
 import { api } from "../utils/api";
+import productView from "./productView";
 
 const Home: NextPage = () => {
+const router = useRouter();
 
   return (
         <>
@@ -18,10 +21,9 @@ const Home: NextPage = () => {
               <h1 className="text-5xl p-7 font-extrabold tracking-tight text-grey-600">
                 New <span className="text-purple-300">T3ST</span> Build
               </h1>
-
               <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
-          <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-        <a href="#">
+          <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" onClick={() => router.push('/productView')}>
+        <a href="#" >
             <img className="p-8 rounded-t-lg" src="" alt="product image" />
         </a>
         <div className="px-5 pb-5">
@@ -42,7 +44,7 @@ const Home: NextPage = () => {
             </div>
         </div>
     </div>
-    <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" onClick={() => router.push('/productView')}>
         <a href="#">
             <img className="p-8 rounded-t-lg" src="" alt="product image" />
         </a>
@@ -65,7 +67,6 @@ const Home: NextPage = () => {
         </div>
     </div>
   </div>
-  
         <HelpWidget /> 
       </main>
     </>
