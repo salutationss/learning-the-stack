@@ -10,7 +10,7 @@ export interface INavItem {
 const NavItem: React.FC<INavItem> = ({ text, href, active }) => {
   return (
     <Link href={href}>
-      <a className={`nav__item ${active ? 'active' : ''}`}>{text}</a>
+      <div className={`nav__item ${active ? 'active' : ''}`}>{text}</div>
     </Link>
   );
 };

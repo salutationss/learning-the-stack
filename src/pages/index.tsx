@@ -6,7 +6,7 @@ import { HelpWidget } from "../components/HelpWidget";
 
 import { api } from "../utils/api";
 import productView from "./productView";
-import cartView from "./cartView";
+import cartView from "./cart";
 
 const Home: NextPage = () => {
 const router = useRouter();

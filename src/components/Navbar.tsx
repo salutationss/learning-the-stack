@@ -16,19 +16,22 @@ const Navbar: React.FC<INavbar> = ({ navActive, setNavActive }) => {
   
 const MENU_LIST :{ text: string, href: string}[] = [
     { text: "Home", href: "/" },
-    { text: "About Us", href: "/about" },
-    { text: "Contact", href: "/contact" },
+    { text: "Products", href: "/productView" },
+    { text: "Cart", href: "/cartView" },
   ];
  
   return (
 
     
-    <header>
+    <header className="flex items-center justify-between flex-wrap bg-teal-700 p-6" >
+    
       <nav className={`nav`}>
         <Link href={"/"}>
-          <a>
-            <h1 className="logo">KT</h1>
-          </a>
+          <>
+          <h1 className="logo text-5xl p-7 font-extrabold tracking-tight text-grey-600">
+                New <span className="text-purple-300">T3ST</span> Build
+              </h1>
+          </>
         </Link>
 
         <div

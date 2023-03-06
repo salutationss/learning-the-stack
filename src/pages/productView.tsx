@@ -9,7 +9,6 @@ const productView = (props: Props) => {
   return (
     <main>
     <Navbar navActive={navActive} setNavActive={setNavActive} />
-    <div>productView</div>
     <HelpWidget />
     </main>
   )
