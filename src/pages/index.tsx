@@ -32,7 +32,7 @@ const router = useRouter();
                 <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white" onClick={() => router.push('/productView')}>Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport</h5>
             </a>
             <div className="flex items-center mt-2.5 mb-5">
-              
+
             </div>
             <div className="flex items-center justify-between">
                 <span className="text-3xl font-bold text-gray-900 dark:text-white" onClick={() => router.push('/productView')}>$599</span>
